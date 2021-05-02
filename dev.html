@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mini Golf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    
+    <script src="holes.js"></script>    
+    <script src="./lib/three.js"></script>
+    <script src="./lib/OrbitControls.js"></script>
+    <script src="./lib/ammo.js"></script>
+    <script src="./lib/GLTFLoader.js"></script>
+    <script src="./lib/AmmoDebugDrawer.js"></script>
+    <script>
+      
+      let courseMap = {};
+    
+      function registerCourse(courseId, callback) {
+        courseMap[courseId] = callback;
+      }
+      
+      async function loadCourse(courseId, hole, helper) {
+        if (courseId in courseMap) {
+          await courseMap[courseId](hole, helper);
+        } else {
+          console.log(`Course not found for ID: ${courseId}`);
+        }
+      }
+      
+    </script>
+    
+    <style>
+      
+      @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@400;700&display=swap');
+      
+      html {
+        width: 100%;
+        height: 100%;
+        background: #11e8bb; /* Old browsers */
+        background: -moz-linear-gradient(top,  #9cfbff 0%, #1bf2fa 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  #9cfbff 0%, #1bf2fa 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  #9cfbff 0%, #1bf2fa 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      }
+
+      html, body, canvas {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      canvas { display: block; }
+      
+      .message {
+        position: absolute;
+        left: 20px;
+        font-family: 'Quicksand', sans-serif;
+        pointer-events: none;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+
+      .small {
+        font-size: 12px;
+      }
+
+      #announce {
+        top: 20px;
+        font-size: 24px;
+        line-height: 28px;
+      }
+
+      #help {
+        bottom: 20px;
+        font-size: 14px;
+        line-height: 18px;
+      }
+      
+    </style>
+    
+  </head>
+  <body>
+    <div id="announce" class="message"></div>
+    <div id="help" class="message">
+      <span class="bold">Controls</span><br>
+      <div id="help-controls">
+        <span>WASD (move) E/Q (up/down)</span><br>
+        <span>Press Space (cancel while aiming)</span><br>
+        <span>Press T (teleport to your ball)</span><br>
+        <span>Press P (place ball at start)</span><br>
+      </div>
+    </div>
+    <script src="dev-holes/ammo.js"></script>
+    <script src="FirstPersonControls.js"></script>
+    <script src="dev.js"></script>
+  </body>
+</html>

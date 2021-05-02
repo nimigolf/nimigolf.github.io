@@ -1,0 +1,287 @@
+/* Text and Headings */
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@400;700&display=swap');
+
+body {
+  font-size: 0;
+}
+
+body, button, input {
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 5px;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h1, h2 {
+  font-family: 'Lobster', sans-serif;
+}
+
+h3, h4, h5 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 48px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 22px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+p, button, input {
+  font-size: 18px;
+}
+
+/* Forms */
+
+button, input {
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 5px;
+  margin: 5px;
+  border: none;
+}
+
+button {
+  padding: 5px 10px;
+  border: 1px solid black;
+  background: transparent;
+}
+
+button:hover {
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+.Danger {
+  background: #EE6C4D;
+  color: white;
+  border: none;
+}
+
+.Danger.Secondary {
+  background: transparent;
+  color: #EE6C4D;
+  border: 1px solid #EE6C4D;
+}
+
+.Danger.Secondary:hover {
+  background: #EE6C4D;
+  color: white;
+  border: none;
+}
+
+/* Page Layout */
+
+html {
+  /* https://css-tricks.com/stripes-css */
+  background: #88b350;
+  background: repeating-linear-gradient(
+    90deg,
+    #88b350,
+    #88b350 150px,
+    #a9de64 150px,
+    #a9de64 300px
+  );
+}
+
+body {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Lobby Layout */
+
+section {
+  margin: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+}
+
+section.transparent {
+  background: transparent;
+}
+
+.Half {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Left {
+  text-align: left;
+}
+
+.Right {
+  text-align: right;
+}
+
+.Center {
+  text-align: center;
+}
+
+.RoomStatus {
+  color: white;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.RoomStatus.InGame {
+  background: #5e5e5e;
+}
+
+.RoomStatus.InLobby {
+  background: #60AFFF;
+}
+
+.RoomPlayer div {
+  vertical-align: top;
+  display: inline-block;
+  height: 30px;
+}
+
+.RoomPlayer p {
+  padding: 5px;
+}
+
+.RoomPlayer .BallHolder {
+  margin: 5px;
+  width: 30px;
+}
+
+.RoomPlayer .Ball {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+}
+
+.RoomPlayer.IsEditable .Ball {
+  z-index: 2;
+}
+
+.RoomPlayer .Ball + .BallColorPicker {
+  display: none;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -10px;
+  width: 200px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  z-index: 1;
+}
+
+.RoomPlayer.IsEditable .Ball:hover + .BallColorPicker {
+  display: block;
+}
+
+.RoomPlayer.IsEditable .Ball + .BallColorPicker:hover {
+  display: block;
+}
+
+.CurrentRoom .Players,
+.CurrentRoom .HoleSelector {
+  margin-bottom: 20px;
+}
+
+.HoleSelector {
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.HoleOption {
+  width: 200px;
+  padding: 5px 0;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.HoleOption:nth-child(1) {
+  margin-left: 0;
+}
+
+.HoleOption:hover {
+  cursor: pointer;
+}
+
+.HoleOption img {
+  margin: 5px;
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+}
+
+.HoleOption.IsSelected {
+  padding: 5px 10px;
+  background: #1bf2fa;
+}
+
+.ScoreCard {
+  overflow-x: scroll;
+}
+
+.ScoreCard table {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  text-align: left;
+}
+
+.ScoreCard th, .ScoreCard td {
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.ScoreCard th:nth-child(1), .ScoreCard td:nth-child(1) {
+  padding: 5px;
+}
+
+.ScoreCard input {
+  margin: 0;
+  width: 50px;
+}
+
+.ScoreCard .Totals {
+  font-weight: bold;
+}
+
+.ScoreCard .BallHolder {
+  margin-left: 5px;
+  width: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ScoreCard .Ball {
+  margin-top: 6px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50px;
+}

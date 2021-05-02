@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mini Golf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>-->
+		<script src="./lib/aframe.0.7.0.min.js"></script>
+    <script src="./lib/aframe-physics-system.4.0.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <style>
+      
+      @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@400;700&display=swap');
+    
+      #announce {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 18px;
+        line-height: 24px;
+        font-family: 'Quicksand', sans-serif;
+      }
+      
+    </style>
+    <script>
+    
+    </script>
+  </head>
+  <body>
+    <a-scene id="scene" physics="iterations: 1000; gravity: -5;" cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+			<a-camera id="camera" position="0 5 0" rotation="-45 0 0" collider-check>
+        <!--<a-cursor></a-cursor>-->
+			</a-camera>
+      <a-assets>
+        <a-mixin id="surface" static-body></a-mixin>
+        <a-mixin id="green" material="color: #a9de64;"></a-mixin>
+        <a-mixin id="boundary" material="color: #88b350;"></a-mixin>
+      </a-assets>
+      
+      <a-sphere id="ball" class="clickable" dynamic-body="linearDamping: 0.5; angularDamping: 0.5;" position="0 0.3 -4" radius="0.25" color="#FFF"></a-sphere>
+      <a-entity id="vector" visible="false" line="start: 1 2 3; end: 4 5 6; color: #ff0"></a-entity>
+      
+      <a-plane mixin="surface green" position="0 0 4" rotation="-90 0 0" width="40" height="20"></a-plane>
+      <a-plane mixin="surface green" position="0 0 -11" rotation="-90 0 0" width="40" height="8"></a-plane>
+      <a-plane mixin="surface green" position="10.25 0 -6.5" rotation="-90 0 0" width="19.5" height="1"></a-plane>
+      <a-plane mixin="surface green" position="-10.25 0 -6.5" rotation="-90 0 0" width="19.5" height="1"></a-plane>
+      <a-ring mixin="green" position="0 -0.001 -6.5" rotation="-90 0 0" geometry="radiusInner: 0.5; radiusOuter: 1"></a-ring>
+      
+      <a-plane id="hole" static-body position="0 -0.6 0" rotation="-90 0 0" width="30" height="30" color="#000"></a-plane>
+      
+      <a-plane mixin="surface boundary" position="0 0.5 -15" rotation="0 0 0" width="40" height="1"></a-plane>
+      <a-plane mixin="surface boundary" position="-20 0.5 -0.5" rotation="0 90 0" width="29" height="1"></a-plane>
+      <a-plane mixin="surface boundary" position="20 0.5 -0.5" rotation="0 -90 0" width="29" height="1"></a-plane>
+      <a-plane mixin="surface boundary" position="0 0.5 14" rotation="180 0 0" width="40" height="1"></a-plane>
+      
+      <a-sky color="#1bf2fa"></a-sky>
+      
+    </a-scene>
+    <div id="announce"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

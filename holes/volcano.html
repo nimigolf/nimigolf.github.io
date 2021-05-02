@@ -1,0 +1,171 @@
+<a-scene id="scene" physics="iterations: 1000; gravity: -2.5;" cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+  
+  <a-camera id="camera" position="0 5 0" rotation="-45 0 0" collider-check></a-camera>
+  
+  <a-assets>
+    <a-mixin id="surface" static-body material="color: #fc7756; side: double;"></a-mixin>
+    <a-mixin id="green" material="color: #fc7756;"></a-mixin>
+    <a-mixin id="black" material="color: black;"></a-mixin>
+    <a-mixin id="wall" material="color: #d15030;" geometry="height: 1; depth: 0.05;"></a-mixin>
+    <a-mixin id="floor" rotation="-90 0 0"></a-mixin>
+    <a-mixin id="left" rotation="0 90 0"></a-mixin>
+    <a-mixin id="right" rotation="0 -90 0"></a-mixin>
+    <a-mixin id="top" rotation="0 0 0"></a-mixin>
+    <a-mixin id="bottom" rotation="180 0 0"></a-mixin>
+    <a-mixin id="flag"
+             material="color: #EE6C4D;"
+             geometry="vertexA: 0 0.5 0; vertexB: -0.25 -0.5 0; vertexC: 0.25 -0.5 0;"
+             ></a-mixin>
+    <a-mixin id="mountain-body" static-body rotation="180 0 0" visible="false"></a-mixin>
+    <a-mixin id="mountain-face" material="color: #452b01;"></a-mixin>
+    <a-asset-item id="obj-cloud" src="https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fcloud.obj?v=1617082461160"></a-asset-item>
+    <a-asset-item id="mtl-cloud" src="https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fcloud.mtl?v=1617082461997"></a-asset-item>
+  </a-assets>
+
+  <!-- Sky -->
+
+  <a-sky color="#1bf2fa"></a-sky>
+
+  <!-- Ball -->
+
+  <a-sphere id="ball" class="clickable" dynamic-body="linearDamping: 0.55; angularDamping: 0.8;" position="0 0.3 -4" radius="0.25" color="#FFF"></a-sphere>
+  <a-entity id="vector" visible="false" line="start: 1 2 3; end: 4 5 6; color: #ff0"></a-entity>
+  
+  <!-- Tee -->
+
+  <a-box mixin="surface wall left" position="-10 0.25 -5" width="10" height="1.5"></a-box>
+  <a-box mixin="surface wall right" position="10 0.25 -5" width="10" height="1.5"></a-box>
+  <a-box mixin="surface wall bottom" position="0 0.25 0" width="20" height="1.5"></a-box>
+
+  <a-plane mixin="surface floor" position="0 0 -5" width="20" height="10"></a-plane>
+  
+  <!-- First Ramp -->
+  
+  <a-entity position="0 1.25 -12" rotation="30 0 0">
+    <a-box mixin="surface wall left" position="-10 0.25 0" width="5" height="1.5"></a-box>
+    <a-box mixin="surface wall right" position="10 0.25 0" width="5" height="1.5"></a-box>
+    <a-plane mixin="surface floor" position="0 0 0" width="20" height="5"></a-plane>
+  </a-entity>
+  
+  <a-entity spinning-trap="rate: 0.1;" position="0 12 -30">
+    <a-entity rotation="0 0 0">
+      <a-entity scale="0.75 0.75 0.75" position="0 0 7" obj-model="obj: #obj-cloud; mtl: #mtl-cloud;"></a-entity>
+    </a-entity>
+    <a-entity rotation="0 90 0">
+      <a-entity scale="0.75 0.75 0.75" position="0 0 7" obj-model="obj: #obj-cloud; mtl: #mtl-cloud;"></a-entity>
+    </a-entity>
+    <a-entity rotation="0 180 0">
+      <a-entity scale="0.75 0.75 0.75" position="0 0 7" obj-model="obj: #obj-cloud; mtl: #mtl-cloud;"></a-entity>
+    </a-entity>
+    <a-entity rotation="0 270 0">
+      <a-entity scale="0.75 0.75 0.75" position="0 0 7" obj-model="obj: #obj-cloud; mtl: #mtl-cloud;"></a-entity>
+    </a-entity>
+  </a-entity>
+  
+  <!-- Mountains -->
+
+  <a-entity position="0 5 -30">
+    
+    <a-cone mixin="mountain-body" position="0 0 0" radius-bottom="15" radius-top="5" height="10"></a-cone>
+    <a-cone mixin="mountain-face" position="0 0 0" radius-bottom="15" radius-top="5" height="10"></a-cone>
+    
+    <a-cylinder mixin="surface" position="0 -1 0" radius="14.5" height="0.5"></a-cylinder>
+    
+    <a-entity position="-12 0 5" rotation="30 90 0">
+      <a-box mixin="surface wall left" position="-5 0.25 0" width="5" height="1.5"></a-box>
+      <a-box mixin="surface wall right" position="5 0.25 0" width="5" height="1.5"></a-box>
+      <a-plane mixin="surface floor" position="0 0 0" width="10" height="5"></a-plane>
+    </a-entity>
+    
+    <a-entity position="12 0 5" rotation="-30 90 0">
+      <a-box mixin="surface wall left" position="-5 0.25 0" width="5" height="1.5"></a-box>
+      <a-box mixin="surface wall right" position="5 0.25 0" width="5" height="1.5"></a-box>
+      <a-plane mixin="surface floor" position="0 0 0" width="10" height="5"></a-plane>
+    </a-entity>
+    
+  </a-entity>
+    
+  <a-entity position="-22 3.5 -30">
+    
+    <a-cone mixin="mountain-body" radius-bottom="15" radius-top="7.5" height="7.5"></a-cone>
+    <a-cone mixin="mountain-face" radius-bottom="15" radius-top="7.5" height="7.5"></a-cone>
+    
+    <a-entity position="8.5 4.5 0" rotation="-30 90 0">
+      <a-box mixin="surface wall left" position="-3.5 0.25 0" width="5" height="1.5"></a-box>
+      <a-box mixin="surface wall right" position="3.5 0.25 0" width="5" height="1.5"></a-box>
+      <a-plane mixin="surface floor" position="0 0 0" width="7" height="5"></a-plane>
+    </a-entity>
+    
+    <a-entity position="-6.75 4.5 0" rotation="30 90 0">
+      <a-box mixin="surface wall left" position="-3.5 0.25 0" width="5" height="1.5"></a-box>
+      <a-box mixin="surface wall right" position="3.5 0.25 0" width="5" height="1.5"></a-box>
+      <a-plane mixin="surface floor" position="0 0 0" width="7" height="5"></a-plane>
+    </a-entity>
+    
+  </a-entity>
+    
+  <a-entity position="22 3.5 -30" rotation="0 180 0">
+    
+    <a-cone mixin="mountain-body" radius-bottom="15" radius-top="7.5" height="7.5"></a-cone>
+    <a-cone mixin="mountain-face" radius-bottom="15" radius-top="7.5" height="7.5"></a-cone>
+    
+    <a-entity position="8.5 4.5 0" rotation="-30 90 0">
+      <a-box mixin="surface wall left" position="-3.5 0.25 0" width="5" height="1.5"></a-box>
+      <a-box mixin="surface wall right" position="3.5 0.25 0" width="5" height="1.5"></a-box>
+      <a-plane mixin="surface floor" position="0 0 0" width="7" height="5"></a-plane>
+    </a-entity>
+    
+    <a-entity position="-6.75 4.5 0" rotation="30 90 0">
+      <a-box mixin="surface wall left" position="-3.5 0.25 0" width="5" height="1.5"></a-box>
+      <a-box mixin="surface wall right" position="3.5 0.25 0" width="5" height="1.5"></a-box>
+      <a-plane mixin="surface floor" position="0 0 0" width="7" height="5"></a-plane>
+    </a-entity>
+    
+  </a-entity>
+  
+  <!-- Goal -->
+
+  <a-entity position="0 11 -30">
+    
+    
+    <!-- Green -->
+
+    <a-plane mixin="surface floor" position="-2.75 0 0" width="4.5" height="10"></a-plane>
+    <a-plane mixin="surface floor" position="2.75 0 0" width="4.5" height="10"></a-plane>
+    <a-plane mixin="surface floor" position="0 0 2.75" width="1" height="4.5"></a-plane>
+    <a-plane mixin="surface floor" position="0 0 -2.75" width="1" height="4.5"></a-plane>
+    
+    <a-box mixin="surface wall top" position="0 -0.5 -5" width="10" height="1"></a-box>
+    <a-box mixin="surface wall bottom" position="0 -0.5 5" width="10" height="1"></a-box>
+    <a-box mixin="surface wall left" position="-5 -0.5 0" width="10" height="1"></a-box>
+    <a-box mixin="surface wall right" position="5 -0.5 0" width="10" height="1"></a-box>
+    
+    <a-plane mixin="surface floor" position="0 -1 0" width="10" height="10"></a-plane>
+
+    <!-- Flag -->
+
+    <a-entity position="0 0 0">
+      <a-triangle mixin="flag" rotation="0 0 -90" position="0.5 4.75 0"></a-triangle>
+      <a-triangle mixin="flag" rotation="180 0 -90" position="0.5 4.75 0"></a-triangle>
+      <a-cylinder position="0 2.5 0" height="5" radius="0.025" color="white"></a-cylinder>
+    </a-entity>
+
+    <!-- Hole -->
+
+    <a-ring mixin="floor green" position="0 -0.001 0" geometry="radiusInner: 0.5; radiusOuter: 1"></a-ring>
+    <a-plane mixin="surface floor black" id="hole" position="0 -0.6 0" width="10" height="10"></a-plane>
+    
+  </a-entity>
+
+</a-scene>
+<div id="announce" class="message"></div>
+<div id="help" class="message">
+  <span class="bold">Controls</span><br>
+  <div id="help-controls">
+    <span>Press K (change putting mode)</span><br>
+    <span>Press Q (cancel while aiming)</span><br>
+    <span>Press T (teleport to your ball)</span><br>
+    <span>Press P (place ball at start)</span><br>
+  </div>
+  <span class="small">Clouds From Poly</span>
+</div>

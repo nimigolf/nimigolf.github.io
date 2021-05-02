@@ -1,0 +1,103 @@
+<a-scene id="scene" physics="iterations: 1000; gravity: -5;" cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+  
+  <a-camera id="camera" position="0 5 0" rotation="-45 0 0" collider-check></a-camera>
+  
+  <a-assets>
+    <a-mixin id="surface" static-body material="color: #a9de64;"></a-mixin>
+    <a-mixin id="green" material="color: #a9de64;"></a-mixin>
+    <a-mixin id="black" material="color: black;"></a-mixin>
+    <a-mixin id="red" material="color: red;"></a-mixin>
+    <a-mixin id="blue" material="color: blue;"></a-mixin>
+    <a-mixin id="wall" material="color: #88b350;" geometry="height: 1; depth: 0.05;"></a-mixin>
+    <a-mixin id="floor" rotation="-90 0 0"></a-mixin>
+    <a-mixin id="left" rotation="0 90 0"></a-mixin>
+    <a-mixin id="right" rotation="0 -90 0"></a-mixin>
+    <a-mixin id="top" rotation="0 0 0"></a-mixin>
+    <a-mixin id="bottom" rotation="180 0 0"></a-mixin>
+    <a-mixin id="flag"
+             material="color: #EE6C4D;"
+             geometry="vertexA: 0 0.5 0; vertexB: -0.25 -0.5 0; vertexC: 0.25 -0.5 0;"
+             ></a-mixin>
+    <a-mixin id="pedestal" material="color: #88b350;"></a-mixin>
+    <a-asset-item id="obj-dino" src="https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fmodel.obj?v=1616832399673"></a-asset-item>
+    <a-asset-item id="mtl-dino" src="https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fmaterials.mtl?v=1616832392451"></a-asset-item>
+  </a-assets>
+
+  <!-- Sky -->
+
+  <a-sky color="#1bf2fa"></a-sky>
+
+  <!-- Ball -->
+
+  <a-sphere id="ball" class="clickable" dynamic-body="linearDamping: 0.5; angularDamping: 0.5;" position="0 0.3 -4" radius="0.25" color="#FFF"></a-sphere>
+  <a-entity id="vector" visible="false" line="start: 1 2 3; end: 4 5 6; color: #ff0"></a-entity>
+
+  <!-- Fairway -->
+
+  <a-box mixin="surface wall top" position="0 0.5 -50" width="20"></a-box>
+  <a-box mixin="surface wall left" position="-10 0.5 -25" width="50"></a-box>
+  <a-box mixin="surface wall right" position="10 0.5 -15" width="30"></a-box>
+  <a-box mixin="surface wall bottom" position="0 0.5 0" width="20"></a-box>
+
+  <a-plane mixin="surface floor" position="0 0 -25" rotation="-90 0 0" width="20" height="50"></a-plane>
+
+  <!-- Dinosaur -->
+
+  <a-entity position="0 0 -40">
+    <a-cylinder mixin="surface pedestal" position="-5.25 0.5 3" height="1" radius="3"></a-cylinder>
+    <a-cylinder mixin="surface pedestal" position="5.25 0.5 3" height="1" radius="3"></a-cylinder>
+    <a-cylinder mixin="surface pedestal" position="6 0.5 -4.5" height="1" radius="3"></a-cylinder>
+    <a-cylinder mixin="surface pedestal" position="-3 0.5 -6.75" height="1" radius="3"></a-cylinder>
+    <a-entity scale="30 30 30"
+              position="0 12 0"
+              rotation="0 5 0"
+              obj-model="obj: #obj-dino; mtl: #mtl-dino;"
+              >
+    </a-entity>
+  </a-entity>
+
+  <!-- Ramp -->
+
+  <a-entity position="14.82963 1.29410 -40" rotation="0 0 15">
+    <a-box mixin="surface wall top" position="0 0.5 -10" width="10"></a-box>
+    <a-box mixin="surface wall bottom" position="0 0.5 10" width="10"></a-box>
+    <a-plane mixin="surface floor" position="0 0 0" width="10" height="20"></a-plane>
+  </a-entity>
+
+  <!-- Green -->
+
+  <a-box mixin="surface wall top" position="30 0.5 -50" width="21"></a-box>
+  <a-box mixin="surface wall bottom" position="30 0.5 -30" width="21"></a-box>
+  <a-box mixin="surface wall right" position="40.5 0.5 -40" width="20"></a-box>
+  <a-box mixin="surface wall left" position="19.5 0.5 -40" width="20"></a-box>
+
+  <a-plane mixin="surface floor" position="24.5 0 -40" width="10" height="20"></a-plane>
+  <a-plane mixin="surface floor" position="35.5 0 -40" width="10" height="20"></a-plane>
+  <a-plane mixin="surface floor" position="30 0 -45.25" width="1" height="9.5"></a-plane>
+  <a-plane mixin="surface floor" position="30 0 -34.75" width="1" height="9.5"></a-plane>
+
+  <!-- Flag -->
+
+  <a-entity position="30 0 -40">
+    <a-triangle mixin="flag" rotation="0 0 -90" position="0.5 4.75 0"></a-triangle>
+    <a-triangle mixin="flag" rotation="180 0 -90" position="0.5 4.75 0"></a-triangle>
+    <a-cylinder position="0 2.5 0" height="5" radius="0.025" color="white"></a-cylinder>
+  </a-entity>
+
+  <!-- Hole -->
+
+  <a-ring mixin="floor green" position="30 -0.001 -40" geometry="radiusInner: 0.5; radiusOuter: 1"></a-ring>
+  <a-plane mixin="surface floor black" id="hole" position="30 -0.6 -40" width="10" height="10"></a-plane>
+
+</a-scene>
+<div id="announce" class="message"></div>
+<div id="help" class="message">
+  <span class="bold">Controls</span><br>
+  <div id="help-controls">
+    <span>Press K (change putting mode)</span><br>
+    <span>Press Q (cancel while aiming)</span><br>
+    <span>Press T (teleport to your ball)</span><br>
+    <span>Press P (place ball at start)</span><br>
+  </div>
+  <span class="small">Dinosaur by Hoai Nguyen from Poly</span>
+</div>

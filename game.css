@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@400;700&display=swap');
+
+.message {
+  position: absolute;
+  left: 20px;
+  font-family: 'Quicksand', sans-serif;
+  pointer-events: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.small {
+  font-size: 12px;
+}
+
+#announce {
+  top: 20px;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+#help {
+  bottom: 20px;
+  font-size: 14px;
+  line-height: 18px;
+}

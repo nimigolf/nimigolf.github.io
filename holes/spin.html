@@ -1,0 +1,173 @@
+<a-scene id="scene" physics="iterations: 1000; gravity: -5;" cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+  
+  <a-camera id="camera" position="0 5 0" rotation="-45 0 0" collider-check></a-camera>
+  
+  <a-assets>
+    <a-mixin id="surface" static-body material="color: #a9de64;"></a-mixin>
+    <a-mixin id="green" material="color: #a9de64;"></a-mixin>
+    <a-mixin id="black" material="color: black;"></a-mixin>
+    <a-mixin id="wall" material="color: #88b350;" geometry="height: 1; depth: 0.05;"></a-mixin>
+    <a-mixin id="floor" rotation="-90 0 0"></a-mixin>
+    <a-mixin id="left" rotation="0 90 0"></a-mixin>
+    <a-mixin id="right" rotation="0 -90 0"></a-mixin>
+    <a-mixin id="top" rotation="0 0 0"></a-mixin>
+    <a-mixin id="bottom" rotation="180 0 0"></a-mixin>
+    <a-mixin id="flag"
+             material="color: #EE6C4D;"
+             geometry="vertexA: 0 0.5 0; vertexB: -0.25 -0.5 0; vertexC: 0.25 -0.5 0;"
+             ></a-mixin>
+    <a-mixin id="ring"
+             position="0 0.05 0"
+             material="color: #808080; metalness: 0.1;"
+             rotation="-90 0 0"
+             geometry="primitive: ring; radiusInner: 8; radiusOuter: 10;"
+             ></a-mixin>
+    <a-mixin id="column"
+             static-body
+             position="0 1 9"
+             material="color: #f2df0c; metalness: 0.1;"
+             geometry="primitive: box; height: 2; width: 1; depth: 1;"
+             ></a-mixin>
+  </a-assets>
+
+  <!-- Sky -->
+
+  <a-sky color="#1bf2fa"></a-sky>
+
+  <!-- Ball -->
+
+  <a-sphere id="ball" class="clickable" dynamic-body="linearDamping: 0.5; angularDamping: 0.5;" position="0 0.3 -4" radius="0.25" color="#FFF"></a-sphere>
+  <a-entity id="vector" visible="false" line="start: 1 2 3; end: 4 5 6; color: #ff0"></a-entity>
+  
+  <!-- Tee -->
+
+  <a-box mixin="surface wall left" position="-10 0.25 -30" width="60" height="1.5"></a-box>
+  <a-box mixin="surface wall right" position="10 0.25 -30" width="60" height="1.5"></a-box>
+  <a-box mixin="surface wall bottom" position="0 0.25 0" width="20" height="1.5"></a-box>
+
+  <a-plane mixin="surface floor" position="0 0 -5" width="20" height="10"></a-plane>
+  
+  <!-- Spinning Challenge -->
+  
+  <a-entity position="0 0 -20">
+    <a-entity spinning-trap="rate: 0.25;">
+      <a-ring mixin="ring"></a-ring>
+      <a-entity rotation="0 0 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 15 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 30 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 45 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 60 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 75 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 90 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 105 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 120 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 135 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 150 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 165 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 180 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 195 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 210 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 225 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 240 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 255 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 270 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 285 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 300 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 315 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 330 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 345 0"><a-entity mixin="column"></a-entity></a-entity>
+    </a-entity>
+  </a-entity>
+  
+  <a-entity position="0 0 -50">
+    <a-entity spinning-trap="rate: 0.25;">
+      <a-ring mixin="ring"></a-ring>
+      <a-entity rotation="0 0 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 15 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 30 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 45 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 60 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 75 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 90 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 105 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 120 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 135 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 150 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 165 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 180 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 195 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 210 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 225 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 240 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 255 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 270 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 285 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 300 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 315 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 330 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 345 0"><a-entity mixin="column"></a-entity></a-entity>
+    </a-entity>
+  </a-entity>
+  
+  <a-entity position="0 0 -50" scale="0.5 1 0.5">
+    <a-entity spinning-trap="direction: -1; rate: 0.5;">
+      <a-ring mixin="ring"></a-ring>
+      <a-entity rotation="0 0 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 30 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 60 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 90 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 120 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 150 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 180 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 210 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 240 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 270 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 300 0"><a-entity mixin="column"></a-entity></a-entity>
+      <a-entity rotation="0 330 0"><a-entity mixin="column"></a-entity></a-entity>
+    </a-entity>
+  </a-entity>
+  
+  <!-- Fairway -->
+  
+  <a-plane mixin="surface floor" position="0 0 -20" width="20" height="20"></a-plane>
+  <a-plane mixin="surface floor" position="0 0 -35" width="20" height="10"></a-plane>
+  
+  <!-- Goal -->
+
+  <a-entity position="0 0 -50">
+    
+    <!-- Green -->
+
+    <a-box mixin="surface wall top" position="0 0.25 -10" width="20" height="1.5"></a-box>
+
+    <a-plane mixin="surface floor" position="-5.25 0 0" width="9.5" height="20"></a-plane>
+    <a-plane mixin="surface floor" position="5.25 0 0" width="9.5" height="20"></a-plane>
+    <a-plane mixin="surface floor" position="0 0 5.25" width="1" height="9.5"></a-plane>
+    <a-plane mixin="surface floor" position="0 0 -5.25" width="1" height="9.5"></a-plane>
+
+    <!-- Flag -->
+
+    <a-entity position="0 0 0">
+      <a-triangle mixin="flag" rotation="0 0 -90" position="0.5 4.75 0"></a-triangle>
+      <a-triangle mixin="flag" rotation="180 0 -90" position="0.5 4.75 0"></a-triangle>
+      <a-cylinder position="0 2.5 0" height="5" radius="0.025" color="white"></a-cylinder>
+    </a-entity>
+
+    <!-- Hole -->
+
+    <a-ring mixin="floor green" position="0 -0.001 0" geometry="radiusInner: 0.5; radiusOuter: 1"></a-ring>
+    <a-plane mixin="surface floor black" id="hole" position="0 -0.6 0" width="10" height="10"></a-plane>
+    
+  </a-entity>
+
+</a-scene>
+<div id="announce" class="message"></div>
+<div id="help" class="message">
+  <span class="bold">Controls</span><br>
+  <div id="help-controls">
+    <span>Press K (change putting mode)</span><br>
+    <span>Press Q (cancel while aiming)</span><br>
+    <span>Press T (teleport to your ball)</span><br>
+    <span>Press P (place ball at start)</span><br>
+  </div>
+</div>
