@@ -15,40 +15,40 @@ const HOLES = {
   'dino': {
     name: 'Dinosaur Island',
     par: 3,
-    birdsEyeImage: 'https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fdino.png?v=1616960058944'
+    birdsEyeImage: '../assets/images/dino.png',
   },
   'trap': {
     name: 'It\'s a Trap',
     par: 3,
-    birdsEyeImage: 'https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Ftrap.png?v=1616960058679'
+    birdsEyeImage: '../assets/images/trap.png',
   },
   'spin': {
     name: 'Spin Cycle',
     par: 5,
-    birdsEyeImage: 'https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fspin.png?v=1616960058910'
+    birdsEyeImage: '../assets/images/spin.png',
   },
   'black': {
     name: 'Black Box',
     par: 4,
-    birdsEyeImage: 'https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fblack.png?v=1616983147963',
+    birdsEyeImage: '../assets/images/black.png',
     ballSpawn: { x: 0, y: 6.8, z: -4 }
   },
   'volcano': {
     name: 'Volcano',
     par: 5,
-    birdsEyeImage: 'https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fvolcano.png?v=1617083142439'
+    birdsEyeImage: '../assets/images/volcano.png',
   },
   'ammo': {
     name: 'Ammo Test Course',
     useDev: true,
     par: 4,
-    birdsEyeImage: 'https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fammo.png?v=1618013916647',
+    birdsEyeImage: '../assets/images/ammo.png',
     ballSpawn: { x: 1, y: 0.5, z: 5 }
   },
   'ammo-dino': {
     name: 'Loop-de-Loop (Ammo)',
     useDev: true,
     par: 3,
-    birdsEyeImage: 'https://cdn.glitch.com/3399fb46-16ab-4b4a-8648-8cddc3091888%2Fdino.png?v=1616960058944'
+    birdsEyeImage: '../assets/images/dino.png',
   }
 };
